@@ -1,4 +1,4 @@
-const { getLaunches, getALaunch, postLaunch } = require("../../models/Launches/Launches.model");
+const { getLaunches, getALaunch, postLaunch, deleteALaunch } = require("../../models/Launches/Launches.model");
 
 function controllerGetLaunches(req, res) {
 	let launches = getLaunches();
@@ -28,4 +28,14 @@ function controllerPostLaunches(req, res) {
 	res.status(200).json(result);
 }
 
-module.exports = { controllerGetLaunches, controllerGetALaunch, controllerPostLaunches };
+function controllerDeleteLaunch(req, res) {
+	let { launchId } = req.params;
+	let response = deleteALaunch(launchId);
+	if (response.error) {
+		res.status(404).json(response);
+		return;
+	}
+	res.status(200).json(response);
+}
+
+module.exports = { controllerGetLaunches, controllerGetALaunch, controllerPostLaunches, controllerDeleteLaunch };

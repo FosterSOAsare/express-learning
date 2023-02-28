@@ -1,4 +1,4 @@
-const launches = [
+let launches = [
 	{
 		name: "Kepler Exploration -12 ",
 		planet: "Mercury",
@@ -70,6 +70,17 @@ function postLaunch(launchData) {
 	return launchData;
 }
 
+function deleteALaunch(launchId) {
+	// Find launch
+	let launch = launches.find((e) => e.id === parseInt(launchId));
+	if (!launch) {
+		return { error: true, payload: "Invalid launch id" };
+	}
+	// Delete launch
+	launches = launches.filter((e) => e.id !== parseInt(launchId));
+	return launches;
+}
+
 function generateUniqueId() {
 	let id = "";
 	for (let i = 0; i < 5; i++) {
@@ -77,4 +88,4 @@ function generateUniqueId() {
 	}
 	return parseInt(id);
 }
-module.exports = { getLaunches, getALaunch, postLaunch };
+module.exports = { getLaunches, getALaunch, postLaunch, deleteALaunch };

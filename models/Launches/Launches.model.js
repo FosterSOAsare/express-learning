@@ -1,3 +1,5 @@
+const LaunchesSchema = require("./Launches.mongo");
+
 let launches = [
 	{
 		name: "Kepler Exploration -12 ",

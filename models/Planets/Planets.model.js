@@ -1,3 +1,5 @@
+const PlanetsSchema = require("./Planets.mongo");
+
 const planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Uranus", "Neptune", "Pluto"];
 
 function getPlanets() {

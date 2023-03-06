@@ -1,7 +1,7 @@
 const { getLaunches, deleteALaunch, getALaunch, storeALaunch } = require("../../models/Launches/Launches.model");
 
-function controllerGetLaunches(req, res) {
-	res.status(200).json(getLaunches());
+async function controllerGetLaunches(req, res) {
+	res.status(200).json(await getLaunches());
 }
 
 function controllerGetALaunch(req, res) {

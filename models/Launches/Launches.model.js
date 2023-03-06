@@ -1,3 +1,5 @@
+const launchesSchema = require("./Launches.mongo");
+
 let launches = [
 	{
 		name: "Asare Foster",
@@ -25,7 +27,16 @@ let launches = [
 	},
 ];
 
-function getLaunches() {
+async function getLaunches() {
+	let newLaunch = new launchesSchema({
+		name: "Kepler Exploration 20",
+		target: "Earth",
+		isSuccessful: false,
+		isLaunched: true,
+		date: 1637698433103,
+		id: 354782,
+	});
+	await newLaunch.save();
 	return launches;
 }
 

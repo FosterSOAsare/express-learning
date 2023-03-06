@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const planetsRouter = require("./controllers/Planets/Planets.route");
 const launchessRouter = require("./controllers/Launches/Launches.route");
 const mongoose = require("mongoose");
+const { fetchPlanets } = require("./models/Planets/Planets.model");
 
 mongoose.connect("mongodb+srv://scyrety:Asare4ster...@cluster0.e7viasv.mongodb.net/?retryWrites=true&w=majority");
 
@@ -19,5 +20,5 @@ app.use(launchessRouter);
 
 app.listen(PORT, () => {
 	console.log(`Listening on PORT ${PORT}...`);
-	console.log(process.argv);
+	fetchPlanets();
 });
